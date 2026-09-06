@@ -215,6 +215,10 @@
                             Timezone: UTC-0
                         </div>
                     </div>
+                    <div class="mt-4 text-center" aria-live="polite">
+                        <div class="text-sm font-semibold text-blue-800">Time remaining</div>
+                        <div id="submission-countdown" class="text-xl font-bold text-blue-900">Loading countdown...</div>
+                    </div>
                     <div class="mt-6 text-gray-600">
                         Submit through the OpenReview workshop page by the deadline above.
                     </div>
@@ -244,7 +248,7 @@
                         <div class="md:w-40 font-bold text-blue-600 mb-1 md:mb-0">Nov 23, 2026, 11:59 AM UTC</div>
                         <div class="flex-1">
                             <h4 class="text-lg font-bold text-gray-900">Paper Submission Deadline</h4>
-                            <p class="text-gray-600">Deadline for paper submissions (timezone: UTC-0).</p>
+                            <p class="text-gray-600">Deadline for paper submissions.</p>
                         </div>
                     </div>
                 </div>
@@ -355,6 +359,29 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const submissionDeadline = new Date('2026-11-23T11:59:00Z').getTime();
+        const countdown = document.getElementById('submission-countdown');
+
+        function updateSubmissionCountdown() {
+            const remaining = submissionDeadline - Date.now();
+
+            if (remaining <= 0) {
+                countdown.textContent = 'Submission deadline has passed';
+                return;
+            }
+
+            const days = Math.floor(remaining / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((remaining / (1000 * 60 * 60)) % 24);
+            const minutes = Math.floor((remaining / (1000 * 60)) % 60);
+            const seconds = Math.floor((remaining / 1000) % 60);
+            countdown.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        }
+
+        updateSubmissionCountdown();
+        setInterval(updateSubmissionCountdown, 1000);
+    </script>
 
 </body>
 </html>
