@@ -7,19 +7,89 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --ink: #18242d;
+            --muted: #64727c;
+            --paper: #f5f7f8;
+            --line: #dfe6e9;
+            --accent: #0f766e;
+            --accent-dark: #115e59;
+        }
+
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
+            background: var(--paper);
+            color: var(--ink);
         }
+
+        section {
+            border-top: 1px solid rgba(223, 230, 233, 0.8);
+        }
+
+        section h2 {
+            letter-spacing: -0.02em;
+        }
+
+        section > div > p.text-center {
+            color: var(--muted);
+        }
+
         .hero-bg {
-            background-image: url('img/wacv2027-hero.jpg');
+            position: relative;
+            isolation: isolate;
+            background-position: center top;
+            background-color: transparent;
+            background-blend-mode: normal;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            background: linear-gradient(180deg, rgba(8, 22, 29, 0.03) 0%, rgba(8, 22, 29, 0.78) 100%);
+        }
+
+        .hero-bg > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-bg h1 {
+            letter-spacing: -0.04em;
+        }
+
+        article.bg-white {
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 30px rgba(24, 36, 45, 0.07);
+            transition: transform 180ms ease, box-shadow 180ms ease;
+        }
+
+        article.bg-white:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 16px 36px rgba(24, 36, 45, 0.11);
+        }
+
+        a.bg-blue-600 {
+            background-color: var(--accent);
+        }
+
+        a.bg-blue-600:hover {
+            background-color: var(--accent-dark);
+        }
+
+        .prose strong,
+        article strong {
+            color: var(--ink);
+        }
+
+        .hero-bg {
+            background-image: url('img/wacv27-hero-high.jpg');
             background-size: cover;
-            background-position: center;
-            background-color: rgba(0, 0, 0, 0.55);
-            background-blend-mode: multiply;
         }
         .nav-bg {
-            background-image: url('img/wacv2027-hero.jpg');
+            background-image: url('img/wacv27-hero-high.jpg');
             background-size: cover;
             background-position: center;
         }
@@ -38,18 +108,18 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between h-16">
                     <div class="flex items-center">
-                        <span class="text-xl font-bold text-white">Data4VFM @ WACV 2027</span>
+                        <span class="text-xl font-bold text-white">Data4VFM</span>
                     </div>
                     <div class="hidden md:flex items-center space-x-8">
                         <a href="#about" class="text-white/80 hover:text-white transition">About</a>
-                        <a href="#keynotes" class="text-white/80 hover:text-white transition">Keynote Speakers</a>
-                        <a href="#submissions" class="text-white/80 hover:text-white transition">Call for Papers</a>
+                        <a href="#keynotes" class="text-white/80 hover:text-white transition">Speakers</a>
+                        <a href="#submissions" class="text-white/80 hover:text-white transition">CFP</a>
                         <a href="#topics" class="text-white/80 hover:text-white transition">Topics</a>
                         <a href="schedule.html" class="text-white/80 hover:text-white transition">Schedule</a>
-                        <a href="#schedule" class="text-white/80 hover:text-white transition">Important Dates</a>
+                        <a href="#schedule" class="text-white/80 hover:text-white transition">Dates</a>
                         <a href="#faq" class="text-white/80 hover:text-white transition">FAQ</a>
                         <a href="#organizers" class="text-white/80 hover:text-white transition">Organizers</a>
-                        <a href="https://forms.gle/Lx9a1wFt7dMwT44aA" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-white transition">Become a Reviewer</a>
+                        <a href="https://forms.gle/Lx9a1wFt7dMwT44aA" target="_blank" rel="noopener noreferrer" class="text-white/80 hover:text-white transition">Reviewers</a>
                     </div>
                 </div>
             </div>
@@ -133,7 +203,7 @@
     <!-- Keynote Speakers -->
     <section id="keynotes" class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Keynote Speakers</h2>
+            <h2 class="text-3xl font-bold text-center mb-4 text-gray-900">Speakers</h2>
             <p class="text-center text-gray-600 mb-12 max-w-3xl mx-auto">We are pleased to welcome three researchers whose work advances data-centric methods for visual and multimodal foundation models.</p>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Keynote Speaker 1 -->
